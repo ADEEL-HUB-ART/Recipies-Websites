@@ -1,0 +1,21 @@
+{% extends 'recipes/base.html' %}
+{% block title %}All Recipes{% endblock %}
+{% block content %}
+<h2>All Recipes</h2>
+<div class="row">
+    {% for recipe in object_list %}
+    <div class="col-md-4 mb-3">
+        <div class="card h-100">
+            <img src="{{ recipe.image.url }}" class="card-img-top" alt="{{ recipe.title }}">
+            <div class="card-body">
+                <h5 class="card-title">{{ recipe.title }}</h5>
+                <p class="card-text">{{ recipe.description|truncatewords:15 }}</p>
+                <a href="{% url 'recipe_detail' recipe.pk %}" class="btn btn-primary">View</a>
+            </div>
+        </div>
+    </div>
+    {% empty %}
+    <p>No recipes found.</p>
+    {% endfor %}
+</div>
+{% endblock %}

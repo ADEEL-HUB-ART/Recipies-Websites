@@ -1,0 +1,12 @@
+{% extends 'recipes/base.html' %}
+{% block title %}{{ object.title }}{% endblock %}
+{% block content %}
+<h2>{{ object.title }}</h2>
+<img src="{{ object.image.url }}" alt="{{ object.title }}" class="img-fluid mb-3">
+<p><strong>Description:</strong> {{ object.description }}</p>
+<p><strong>Ingredients:</strong><br> {{ object.ingredients|linebreaks }}</p>
+<p><strong>Instructions:</strong><br> {{ object.instructions|linebreaks }}</p>
+
+<a href="{% url 'recipe_edit' object.pk %}" class="btn btn-warning">Edit</a>
+<a href="{% url 'recipe_delete' object.pk %}" class="btn btn-danger">Delete</a>
+{% endblock %}
